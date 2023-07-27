@@ -1,4 +1,12 @@
+#!/usr/bin/python3
+'''Working with Pascal triangle module
+'''
+
+
 def pascal_triangle(n):
+    '''Create a list a intergers to represent
+    the Pascal triangle
+    '''
     if n <= 0:
         return []
 
