@@ -7,8 +7,9 @@ def pascal_triangle(n):
     '''Create a list a intergers to represent
     the Pascal triangle
     '''
-    if n <= 0:
-        return []
+    triangle = []
+    if type(n) is not int or n <= 0:
+        return triangle
 
     triangle = [[1]]
     for i in range(1, n):
