@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-'''Working with Pascal triangle module
+'''Working with Pascal's triangle module
 '''
 
 
 def pascal_triangle(n):
-    '''Create a list a intergers to represent
-    the Pascal triangle
+    '''Creates a list of lists of integers representing
+    the Pascal's triangle of a given integer.
     '''
     triangle = []
     if type(n) is not int or n <= 0:
