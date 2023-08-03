@@ -16,6 +16,7 @@ def canUnlockAll(boxes):
         if not boxId or boxId >= n or boxId < 0:
             continue
         if boxId not in whyte_boxes:
-            kal_boxes = kal_boxes.union(set(boxes[boxId]))
+            kal_boxes = kal_boxes.union(boxes[boxId])
             whyte_boxes.add(boxId)
-            return n == len(whyte_boxes)
+
+    return n == len(whyte_boxes)
