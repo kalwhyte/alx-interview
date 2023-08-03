@@ -1,25 +1,21 @@
 #!/usr/bin/python3
-'''Lockboxes
+'''Working with Lockboxes module
 '''
 
 
 def canUnlockAll(boxes):
-    '''Determines if all the boxes can be opened
+    '''Checks if all the boxes in a list of boxes containing the keys
+    (indices) to other boxes can be unlocked given that the first
+    box is unlocked.
     '''
-    if not boxes:
-        return False
-    if not isinstance(boxes, list):
-        return False
-    if len(boxes) == 0:
-        return False
-    if len(boxes) == 1:
-        return True
-    keys = [0]
-    for key in keys:
-        for key in boxes[key]:
-            if key not in keys:
-                if key < len(boxes):
-                    keys.append(key)
-    if len(keys) == len(boxes):
-        return True
-    return False
+    n = len(boxes)
+    whyte_boxes = set([0])
+    kal_boxes = set(boxes[0]).difference(set([0]))
+    while len(kal_boxes) > 0:
+        boxId = kal_boxes.pop()
+        if not boxId or boxId >= n or boxId < 0:
+            continue
+        if boxId not in whyte_boxes:
+            kal_boxes = kal_boxes.union(set(boxes[boxId]))
+            whyte_boxes.add(boxId)
+            return n == len(whyte_boxes)
