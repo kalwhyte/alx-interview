@@ -3,6 +3,8 @@
 
 
 import sys
+from time import sleep
+import datetime
 
 
 def print_stats(file_size, status_codes):
