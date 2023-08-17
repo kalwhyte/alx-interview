@@ -13,8 +13,6 @@ def print_stats(file_size, status_codes):
 
 
 if __name__ == "__main__":
-    '''Runs the log parsing module
-    '''
     status_codes = {
         "200": 0,
         "301": 0,
