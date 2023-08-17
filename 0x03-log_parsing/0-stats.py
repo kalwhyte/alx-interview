@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
-"""Log parsing"""
+'''Log parsing
+'''
+
+
 import sys
+import datetime
+import random
+from time import sleep
 
 
 def print_stats(file_size, status_codes):
-    """Prints the stats"""
+    '''Prints the stats
+    '''
     print("File size: {}".format(file_size))
     for key, value in sorted(status_codes.items()):
         if value:
