@@ -12,7 +12,7 @@ def print_stats(file_size, status_codes):
             print("{}: {}".format(key, value))
 
 
-def run():
+if __name__ == "__main__":
     '''Runs the log parsing module
     '''
     status_codes = {
@@ -38,7 +38,3 @@ def run():
                 print_stats(file_size, status_codes)
     except KeyboardInterrupt:
         print_stats(file_size, status_codes)
-
-
-if __name__ == "__main__":
-    run()
