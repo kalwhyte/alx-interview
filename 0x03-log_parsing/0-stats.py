@@ -5,6 +5,7 @@
 import sys
 from time import sleep
 import datetime
+import random
 
 
 def print_stats(file_size, status_codes):
