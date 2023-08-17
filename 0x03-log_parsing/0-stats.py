@@ -1,12 +1,6 @@
-#!/usr/bin/env python3
-'''Log parsing
-'''
-
-
+#!/usr/bin/python3
+''' Log parsing module'''
 import sys
-import datetime
-import random
-from time import sleep
 
 
 def print_stats(file_size, status_codes):
