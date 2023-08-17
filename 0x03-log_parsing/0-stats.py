@@ -12,9 +12,19 @@ def print_stats(file_size, status_codes):
             print("{}: {}".format(key, value))
 
 
-if __name__ == "__main__":
-    status_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
-                    "403": 0, "404": 0, "405": 0, "500": 0}
+def run():
+    '''Runs the log parsing module
+    '''
+    status_codes = {
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0
+    }
     file_size = 0
     count = 0
     try:
@@ -28,5 +38,7 @@ if __name__ == "__main__":
                 print_stats(file_size, status_codes)
     except KeyboardInterrupt:
         print_stats(file_size, status_codes)
-        raise
-    print_stats(file_size, status_codes)
+
+
+if __name__ == "__main__":
+    run()
