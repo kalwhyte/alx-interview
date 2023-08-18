@@ -29,6 +29,6 @@ if __name__ == '__main__':
                 status_codes[data[-2]] += 1
             if count % 10 == 0:
                 print_stats(file_size, status_codes)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print_stats(file_size, status_codes)
     print_stats(file_size, status_codes)
