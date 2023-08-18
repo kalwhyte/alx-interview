@@ -31,3 +31,4 @@ if __name__ == '__main__':
                 print_stats(file_size, status_codes)
     except KeyboardInterrupt:
         print_stats(file_size, status_codes)
+    print_stats(file_size, status_codes)
