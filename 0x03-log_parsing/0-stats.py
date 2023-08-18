@@ -9,15 +9,15 @@ import sys
 def print_stats(file_size, status_codes):
     '''Prints the stats
     '''
-    print("File size: {}".format(file_size))
+    print('File size: {:d}'.format(file_size))
     for key, value in sorted(status_codes.items()):
         if value:
-            print("{}: {}".format(key, value))
+            print('{:s}: {:d}'.format(key, value))
 
 
-if __name__ == "__main__":
-    status_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
-                    "403": 0, "404": 0, "405": 0, "500": 0}
+if __name__ == '__main__':
+    status_codes = {'200': 0, '301': 0, '400': 0, '401': 0,
+                    '403': 0, '404': 0, '405': 0, '500': 0}
     file_size = 0
     count = 0
     try:
@@ -31,4 +31,3 @@ if __name__ == "__main__":
                 print_stats(file_size, status_codes)
     except KeyboardInterrupt:
         print_stats(file_size, status_codes)
-    print_stats(file_size, status_codes)
