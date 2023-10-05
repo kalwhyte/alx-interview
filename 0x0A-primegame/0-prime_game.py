@@ -3,36 +3,28 @@
 from math import sqrt
 
 
-def is_prime(n, nums):
-    """ Where x is the number of rounds,
-    and nums is an array of n.
-    """
-    if n < 2:
-        return False
-    if n in nums:
-        return True
-    if n % 2 == 0:
-        return False
-    for i in range(3, int(sqrt(n))+1, 2):
-        if n % i == 0:
-            return False
-    return True
-
 def isWinner(x, nums):
     """ Where x is the number of rounds and nums is an array of n
     """
     if not nums or x < 1:
         return None
-    Maria = 0
-    Ben = 0
-    for i in range(len(nums)):
-        if is_prime(i, nums):
-            Maria += 1
+
+    n = max(nums)
+    sieve = [True] * (n + 1)
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(sqrt(n)) + 1):
+        if sieve[i]:
+            for j in range(i * i, n + 1, i):
+                sieve[j] = False
+
+    sieve = [i for i, x in enumerate(sieve) if x]
+    c = 0
+    for n in nums:
+        for i in range(len(sieve)):
+            if sieve[i] > n:
+                break
+            c += 1
+        if c % 2 == 0:
+            return "Ben"
         else:
-            Ben += 1
-    if Maria > Ben:
-        return "Maria"
-    elif Maria < Ben:
-        return "Ben"
-    else:
-        return None
+            return "Maria"
