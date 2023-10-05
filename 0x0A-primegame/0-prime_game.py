@@ -3,43 +3,32 @@
 from math import sqrt
 
 
-def is_prime(n):
-    """ checks if a number is prime """
-    if n < 2:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-
-    for i in range(3, int(sqrt(n))+1, 2):
-        if n % i == 0:
-            return False
-
-    return True
-
-
 def isWinner(x, nums):
-    """ returns name of player that won most rounds """
-    if not nums or x < 1:
-        return None
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, int(sqrt(num)) + 1):
+            if num % i == 0:
+                return False
+        return True
+    
+    def get_primes(n):
+        if n <= 2:
+            return True
+        return n % 2 == 0
+    
+    winner_count = {"Maria": 0, "Ben": 0}
 
-    maria = 0
-    ben = 0
-
-    for round in range(x):
-        prime_count = 0
-        for num in nums:
-            if is_prime(num):
-                prime_count += 1
-        if prime_count % 2 == 0:
-            ben += 1
+    for n in nums:
+        if get_primes(n):
+            winner_count["Maria"] += 1
         else:
-            maria += 1
+            winner_count["Ben"] += 1
 
-    if maria > ben:
+    if winner_count["Maria"] > winner_count["Ben"]:
         return "Maria"
-    elif ben > maria:
+    elif winner_count["Maria"] < winner_count["Ben"]:
         return "Ben"
     else:
         return None
+    
