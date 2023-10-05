@@ -3,28 +3,43 @@
 from math import sqrt
 
 
+def is_prime(n):
+    """ checks if a number is prime """
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+
+    for i in range(3, int(sqrt(n))+1, 2):
+        if n % i == 0:
+            return False
+
+    return True
+
+
 def isWinner(x, nums):
-    """ prime game
-    """
+    """ returns name of player that won most rounds """
     if not nums or x < 1:
         return None
 
-    n = max(nums)
-    sieve = [True] * (n + 1)
-    sieve[0] = sieve[1] = False
-    for i in range(2, int(sqrt(n)) + 1):
-        if sieve[i]:
-            for j in range(i * i, n + 1, i):
-                sieve[j] = False
+    maria = 0
+    ben = 0
 
-    sieve = [i for i, x in enumerate(sieve) if x]
-    c = 0
-    for n in nums:
-        for i in range(len(sieve)):
-            if sieve[i] > n:
-                break
-            c += 1
-        if c % 2 == 0:
-            return "Ben"
+    for round in range(x):
+        prime_count = 0
+        for num in nums:
+            if is_prime(num):
+                prime_count += 1
+        if prime_count % 2 == 0:
+            ben += 1
         else:
-            return "Maria"
+            maria += 1
+
+    if maria > ben:
+        return "Maria"
+    elif ben > maria:
+        return "Ben"
+    else:
+        return None
