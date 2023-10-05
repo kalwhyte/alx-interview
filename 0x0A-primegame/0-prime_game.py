@@ -4,7 +4,7 @@ from math import sqrt
 
 
 def isWinner(x, nums):
-    """ Where x is the number of rounds and nums is an array of n
+    """ prime game
     """
     if not nums or x < 1:
         return None
