@@ -2,6 +2,7 @@
 """ prime game """
 from math import sqrt
 
+
 def is_prime(n, nums):
     """ Where x is the number of rounds,
     and nums is an array of n.
