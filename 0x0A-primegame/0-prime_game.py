@@ -6,18 +6,23 @@ def isWinner(x, nums):
     """ prime game """
     if not nums or x < 1:
         return None
-    Maria = 0
-    ben = 0
-    # get primes up to max num
     n = max(nums)
-    primes = set(range(2, n + 1))
-    for i in range(2, int(n**5)+ 1):
-        primes -= set(range(i * i, n + 1, i))
-   # count primes for each player
-    for n in nums[:x]:
-        primes_count = sum([p <= n for p in primes])
-        ben += primes_count % 2 == 0
-        Maria += primes_count % 2 == 1
-    if Maria == ben:
+    sieve = [True] * (n + 1)
+    sieve[0] = False
+    sieve[1] = False
+    for i in range(2, int(n ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n + 1, i):
+                sieve[j] = False
+    sieve = [i for i, x in enumerate(sieve) if x]
+    c = 0
+    for n in nums:
+        for i in range(len(sieve)):
+            if sieve[i] > n:
+                break
+        c += i % 2 == 1
+    if c * 2 == len(nums):
         return None
-    return 'Maria' if Maria > ben else 'Ben'
+    if c * 2 > len(nums):
+        return "Maria"
+    return "Ben"
